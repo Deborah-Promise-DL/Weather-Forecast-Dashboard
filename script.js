@@ -352,8 +352,7 @@
             'unit-btn px-3 py-1.5 text-xs rounded-lg bg-blue-600 text-white font-medium';
     }
 
-    updateCurrentTemperature(); // ONLY current weather updates
-}
+    updateCurrentTemperature(); 
 
         // Check for extreme temperature and show alert message
         function checkExtremeTemperature(tempCelsius) {
