@@ -465,7 +465,7 @@
             errorMessage.textContent = message;
             errorMessage.classList.remove('hidden');
             
-            // Hide error after 5 seconds
+            // Hide error message after 5 seconds
             setTimeout(() => {
                 errorMessage.classList.add('hidden');
             }, 5000);
