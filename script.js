@@ -355,7 +355,7 @@
     updateCurrentTemperature(); // ONLY current weather updates
 }
 
-        // Check for extreme temperature and show alert
+        // Check for extreme temperature and show alert message
         function checkExtremeTemperature(tempCelsius) {
             // Extreme temperature thresholds
             const extremeHigh = 40; // Celsius
