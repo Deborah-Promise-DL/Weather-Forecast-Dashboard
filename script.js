@@ -407,7 +407,7 @@
         
         // Update weather icon
         function updateWeatherIcon(condition, description) {
-            let iconClass = 'fas fa-sun'; // Default
+            let iconClass = 'fas fa-sun'; // Default icon
             
             switch(condition.toLowerCase()) {
                 case 'clear':
