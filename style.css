@@ -1,0 +1,66 @@
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .weather-bg {
+            transition: background-image 0.5s ease;
+            background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+        }
+        
+        .sunny-bg {
+            background-image: url("https://media.istockphoto.com/id/1145773484/photo/bright-blue-sky-with-sun-and-clouds-background.jpg?s=612x612&w=0&k=20&c=L6hNvjkvOfMespp0m7slOKZL6UJVk28_iLjVzDTbAtE=");
+        }
+        
+        .cloudy-bg {
+            background-image: url("https://images.unsplash.com/photo-1611928482473-7b27d24eab80?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+
+        }
+        
+        .rainy-bg {
+           background-image: url("https://media.istockphoto.com/id/1476189983/photo/summer-rain-raindrops-bad-weather-depression.jpg?s=612x612&w=0&k=20&c=IwJXd2bk5O65aF5XZwoB-WJiFpCIrmbZltgbQTXNNkk=");
+
+        }
+        
+        .snow-bg {
+            background-image: url("https://plus.unsplash.com/premium_photo-1664299693424-a59fb1082c2f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c25vdyUyMHdlYXRoZXJ8ZW58MHx8MHx8fDA%3D");
+        }
+        
+        .storm-bg {
+            background-image: url("https://media.istockphoto.com/id/1011777484/photo/cloud-storm-sky-with-thunderbolt-over-rural-landscape.webp?a=1&b=1&s=612x612&w=0&k=20&c=G8aN12QHfqH8ktSwUanoQNvyYx2anv7Saof78ppYTZw=");
+       }
+        
+        .clear-bg {
+            background-image: url("https://images.unsplash.com/photo-1691848746386-d5de9f5c05a2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xlYXIlMjB3ZWF0aGVyfGVufDB8fDB8fHww");
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .alert-popup {
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+  
+        
