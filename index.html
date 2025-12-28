@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast Dashboard</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Vanilla CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+</head>
+<body class="min-h-screen weather-bg sunny-bg">
+    <!-- Alert for extreme temperatures -->
+    <div id="temperatureAlert" class="hidden alert-popup fixed top-0 left-0 right-0 z-50 p-4 text-white text-center font-bold">
+        <div class="max-w-4xl mx-auto bg-red-600 rounded-lg p-3 shadow-lg">
+            <i class="fas fa-exclamation-triangle mr-2"></i>
+            <span id="alertMessage">Extreme Temperature Alert!</span>
+            <button id="closeAlert" class="ml-4 text-white hover:text-gray-200">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Weather Forecast Dashboard</h1>
+            <p class="text-white text-lg md:text-xl">Get accurate weather information for any city</p>
+        </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!--Search and Current Weather -->
+                <div class="lg:col-span-1">
+                <!-- Search Section -->
+                <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-6 mb-6 overflow-visible relative z-30">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Search Location</h2>
+                    
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-medium mb-2" for="cityInput">
+                            Enter City Name
+                        </label>
+                        <div class="flex">
+                            <input 
+                                type="text" 
+                                id="cityInput" 
+                                placeholder="City Name" 
+                                class="w-full p-3 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            >
+                            <button 
+                                id="searchBtn"
+                                class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-5 rounded-r-lg transition duration-300"
+                            >
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        <div id="errorMessage" class="text-red-600 text-sm mt-2 hidden">
+                            Please enter a valid city name.
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Searches Dropdown -->
+<div class="mb-4 relative">
+    <button 
+        id="recentToggle"
+        class="flex items-center justify-between w-full text-gray-700 text-sm font-medium"
+    >
+        Recent Searches 🔽
+    </button>
+
+    <div 
+        id="recentSearches" 
+        class="hidden bg-white border border-gray-300 rounded-lg shadow-lg absolute w-full mt-2 z-50"
+    ></div>
+
+    <div id="noRecentSearches" class="text-gray-500 text-sm mt-2">
+        No recent searches yet.
+    </div>
+</div>       
+                    <!-- Current Location Button -->
+                    <div class="mb-6">
+                        <button 
+                            id="currentLocationBtn"
+                            class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center"
+                        >
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Get Current Location Weather
+                        </button>
+                    </div>
+                </div>
+            </div>
+                
+                <!-- Current Weather Display -->              
+
+   <div class="lg:col-span-2">
+    <div id="currentWeather"
+     class="bg-white/95 backdrop-blur-sm rounded-xl shadow-xl p-5 max-w-4xl mx-auto">
+ 
+    <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Current Weather</h2>
+                    <div class="text-center">
+                    <div id="weatherIcon" class="text-5xl mb-3 text-blue-600">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div id="cityName" class="text-xl font-bold text-gray-800 mb-2">--</div>
+                        <div id="currentDate" class="text-gray-600 mb-4">--</div>
+
+                        
+                       <!-- Weather Status -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
+
+    <!-- Temperature -->
+    <div class="flex items-center gap-2 bg-blue-50 rounded-lg px-3 py-2">
+        <i class="fas fa-thermometer-half text-blue-600"></i>
+        <div class="flex items-center justify-between w-full">
+    <!-- Left: Temp -->
+    <div>
+        <div class="text-xs text-gray-500">Temp</div>
+        <div id="temperature" class="font-bold text-gray-800 text-lg">--°</div>
+    </div>
+
+    <!-- Right: Toggle -->
+    <div class="inline-flex rounded-md border border-gray-300 p-0.5">
+        <button
+            id="celsiusBtn"
+            class="unit-btn px-3 py-1.5 text-xs rounded-lg bg-blue-600 text-white font-medium"
+        >
+            °C
+        </button>
+        <button
+            id="fahrenheitBtn"
+            class="unit-btn px-3 py-1.5 text-xs rounded-lg bg-gray-200 text-gray-700 font-medium"
+        >
+            °F
+        </button>
+    </div>
+</div>
+
+    </div>
+
+    <!-- Humidity -->
+    <div class="flex items-center gap-2 bg-blue-50 rounded-lg px-3 py-2">
+        <i class="fas fa-tint text-blue-600"></i>
+        <div>
+            <div class="text-xs text-gray-500">Humidity</div>
+            <div id="humidity" class="font-bold text-gray-800">--%</div>
+        </div>
+    </div>
+
+    <!-- Wind -->
+    <div class="flex items-center gap-2 bg-blue-50 rounded-lg px-3 py-2">
+        <i class="fas fa-wind text-blue-600"></i>
+        <div>
+            <div class="text-xs text-gray-500">Wind</div>
+            <div id="windSpeed" class="font-bold text-gray-800">-- m/s</div>
+        </div>
+    </div>
+
+    <!-- Condition -->
+    <div class="flex items-center gap-2 bg-blue-50 rounded-lg px-3 py-2">
+        <i class="fas fa-cloud text-blue-600"></i>
+        <div>
+            <div class="text-xs text-gray-500">Condition</div>
+            <div id="weatherCondition" class="font-bold text-gray-800 capitalize">--</div>
+        </div>
+    </div>
+
+</div>
+
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+</div> 
+<!--Extended Forecast-->
+<div class="mt-2">
+    <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+            5-Day Forecast
+        </h2>
+
+        <div id="forecastContainer"
+             class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+
+            <div class="text-center">
+                <div class="text-gray-500">No forecast data available</div>
+                <div class="text-gray-400 text-sm">Search for a city to see the forecast</div>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div id="loadingSpinner" class="hidden text-center py-8">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-600"></div>
+            <p class="mt-4 text-gray-600">Loading weather data...</p>
+        </div>
+
+        <!-- Error -->
+        <div id="forecastError" class="hidden text-center py-8">
+            <i class="fas fa-exclamation-circle text-red-500 text-5xl mb-4"></i>
+            <p class="text-gray-700 font-medium">Unable to load forecast data</p>
+            <p class="text-gray-500">Please check your connection and try again</p>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+                <footer class="mt-8 text-center text-white">
+                    <p class="text-md">Weather data provided by <a href="https://openweathermap.org/" target="_blank" class="underline hover:text-blue-200">OpenWeatherMap</a></p>
+                    <p class="text-sm mt-2">Weather Forecast Application &copy; 2025</p>
+                </footer>
+
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
