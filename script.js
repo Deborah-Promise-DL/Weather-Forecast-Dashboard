@@ -372,7 +372,7 @@
             }
         }
         
-        // Update background based on weather condition
+        // Update background class based on weather condition
         function updateBackground(condition) {
             const body = document.body;
             
