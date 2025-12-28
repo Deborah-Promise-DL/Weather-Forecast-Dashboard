@@ -440,7 +440,7 @@
             weatherIcon.innerHTML = `<i class="${iconClass}"></i>`;
         }
         
-        // Get weather icon class for forecast
+        // Get weather icons for forecast
         function getWeatherIconClass(condition) {
             switch(condition) {
                 case 'clear':
