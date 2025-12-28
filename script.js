@@ -353,6 +353,7 @@
     }
 
     updateCurrentTemperature(); 
+}
 
         // Check for extreme temperature and show alert message
         function checkExtremeTemperature(tempCelsius) {
