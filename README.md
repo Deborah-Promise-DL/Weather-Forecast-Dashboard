@@ -26,3 +26,5 @@ This project is a weather forecast application developed using HTML, Tailwind CS
 5. Click recent searches to quickly view weather again
 
 Note: Replace the API key in `script.js` with your own OpenWeatherMap API key.
+
+Check out the project on GitHub: [GitHub Repository](https://github.com/Deborah-Promise-DL/Weather-Forecast-Dashboard.git)
